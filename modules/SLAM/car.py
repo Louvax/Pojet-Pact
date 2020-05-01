@@ -177,18 +177,18 @@ if __name__ == "__main__":
     try:
         car.turn_straight()
         car.forward()
-        car.speed = 30
+        car.speed = 60
 
-        for i in range(121):
-            car.turn((i % 11) - 5)
-            car.camera_to_position(85 + (i % 11), 95 - (i % 11))
+        for i in range(500):
+            car.turn((i % 40) + 70)
+            car.camera_to_position(70 + (i % 40), 70 - (i % 40))
 
             if i % 10 == 0:
                 img = car.capture()
                 if img is None:
                     print("Photo error")
                 else:
-                    cv2.imwrite("/tmp/cv2%i" % i, img)
+                    cv2.imwrite("/tmp/cv2-%i.png" % i, img)
 
     except KeyboardInterrupt:
         print("Interrupted !")
